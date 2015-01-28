@@ -1,25 +1,19 @@
 # iTunes App Reviews
 This module provides you to get the user reviews of your iOS app.
 
-## Install
-Install with npm.
-
-```
-$ npm install itunes-app-reviews
-```
 
 ## Usuage
 The `getReviews()` function returns the reviews of your app.
 
-- `app id` Your App ID on iTunes (Required)
-- `country` two strings country name such as 'us', 'ch', 'it' and 'jp'
-- `limit page number` Normally the iTunes API returns 50 items per 1 page
+- `app id` {string} your app ID on iTunes (Required)
+- `country` {string} two strings country name such as "us", "ch", "it" and "jp"
+- `limit page number` {number} normally the iTunes API returns 50 items per 1 page
 
 ```JavaScript
 var ItunesAppReviews = require('itunes-app-reviews');
 var iTunesAppReviews = new ItunesAppReviews();
 
-// Your App ID, country, limit page number
+// your app ID, country, limit page number
 iTunesAppReviews.getReviews('740146917', 'us', 1);
 
 // success
@@ -36,7 +30,7 @@ iTunesAppReviews.on('error', function(err) {
 Notice: Sometimes iTunes API returns no data.
 
 
-You're able to filter the reviews by date or the app version with the 'filterByDate()' and  the 'filterByVersion()' functions.
+You're able to filter the reviews by date or the app version with the `filterByDate()` and  the `filterByVersion()` functions.
 
 ```JavaScript
 var ItunesAppReviews = require('itunes-app-reviews');
@@ -57,12 +51,12 @@ Notice: You might not be able to get any items, if the older date or version was
 
 To report user reviews, use the `report()` function.
 
-- data {array} review data (Required)
-- options {object} optional object
-  - sepalator {string} break word string like '\n' and '<br>'
-  - day {string} day string added to header
-  - template.header {string} template string
-  - template.entry {string} template string
+- `data` {array} review data (Required)
+- `options` {object} optional object
+  - `sepalator` {string} break word string like `\n` and `<br>`
+  - `day` {string} day string added to header
+  - `template.header` {string} template string
+  - `template.entry` {string} template string
 
 ```JavaScript
 var ItunesAppReviews = require('itunes-app-reviews');
@@ -94,7 +88,8 @@ iTunesAppReviews.on('data', function(review) {
 
 returns:
 ```
-
+iTunes Review Report total: 50
+★★★ by Andrew
 ```
 
 #### header
