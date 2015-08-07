@@ -53,7 +53,7 @@ To report user reviews, use the `report()` function.
 
 - `data` {array} review data (Required)
 - `options` {object} optional object
-  - `sepalator` {string} break word string like `\n` and `<br>`
+  - `separator` {string} break word string like `\n` and `<br>`
   - `day` {string} day string added to header
   - `template.header` {string} template string
   - `template.entry` {string} template string
@@ -78,8 +78,8 @@ You can customize the template.
 iTunesAppReviews.on('data', function(review) {
   var options = {
     template: {
-      header: '{title} total: {summary.total}{sepalator}',
-      entry: '{entry.rating.icon} by {entry.author}{sepalator}'
+      header: '{title} total: {summary.total}{separator}',
+      entry: '{entry.rating.icon} by {entry.author}{separator}'
     }
   };
   console.log(iTunesAppReviews.report(review, options));
@@ -95,10 +95,10 @@ iTunes Review Report total: 50
 #### header
 Default template:
 ```
-{title} {day}{sepalator}
-total:{summary.total} avg:{summary.average}{sepalator}
-{icon.s1} {summary.rating.s1} {icon.s2} {summary.rating.s2} {icon.s3} {summary.rating.s3} {icon.s4} {summary.rating.s4} {icon.s5} {summary.rating.s5}{sepalator}
-{sepalator}
+{title} {day}{separator}
+total:{summary.total} avg:{summary.average}{separator}
+{icon.s1} {summary.rating.s1} {icon.s2} {summary.rating.s2} {icon.s3} {summary.rating.s3} {icon.s4} {summary.rating.s4} {icon.s5} {summary.rating.s5}{separator}
+{separator}
 ```
 
 Output:
@@ -112,11 +112,11 @@ total:50 avg:3.92
 #### entry
 Default template:
 ```
-{entry.title} by {entry.author}{sepalator}
-{entry.rating.icon}{sepalator}
-{entry.comment}{sepalator}
-{entry.updated} {entry.version}{sepalator}
-{sepalator}
+{entry.title} by {entry.author}{separator}
+{entry.rating.icon}{separator}
+{entry.comment}{separator}
+{entry.updated} {entry.version}{separator}
+{separator}
 ```
 
 Output:
