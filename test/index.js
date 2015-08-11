@@ -25,7 +25,7 @@ describe('filterByDate()', function() {
     ];
     assert.deepEqual(itunesAppReviews.filterByDate(data, '2015-01-26'), expected);
   });
-  
+
   it('should return false when the data params is not array', function () {
     assert.equal(itunesAppReviews.filterByDate({}), false);
   });
@@ -45,7 +45,7 @@ describe('filterByVersion()', function() {
     ];
     assert.deepEqual(itunesAppReviews.filterByVersion(data, '5.0.0'), expected);
   });
-  
+
   it('should return false when the data params is not array', function () {
     assert.equal(itunesAppReviews.filterByVersion({}), false);
   });
@@ -80,7 +80,7 @@ describe('summarize()', function() {
     };
     assert.deepEqual(itunesAppReviews.summarize(data), expected);
   });
-  
+
   it('should return false when the data params is not array', function () {
     assert.equal(itunesAppReviews.summarize({}), false);
   });
@@ -105,13 +105,13 @@ describe('report()', function() {
     var expected = 'iTunes Review Report  \n ★ ★★ ★★★ ★★★★ ★★★★★';
     var options = {
       template: {
-        header: '{title} {day} {sepalator} {icon.s1} {icon.s2} {icon.s3} {icon.s4} {icon.s5}',
+        header: '{title} {day} {separator} {icon.s1} {icon.s2} {icon.s3} {icon.s4} {icon.s5}',
         entry: ''
       }
     };
     assert.deepEqual(itunesAppReviews.report(data, options), expected);
   });
-  
+
   it('should get report customized header 2', function () {
     var expected = '1 5 0 0 0 0 1';
     var options = {
@@ -122,18 +122,18 @@ describe('report()', function() {
     };
     assert.deepEqual(itunesAppReviews.report(data, options), expected);
   });
-  
+
   it('should get report customized entry', function () {
     var expected = 'title author \n ★★★★★ comment 2015-01-28 9:00:00 AM v5.0.1';
     var options = {
       template: {
         header: '',
-        entry: '{entry.title} {entry.author} {sepalator} {entry.rating.icon} {entry.comment} {entry.updated} {entry.version}'
+        entry: '{entry.title} {entry.author} {separator} {entry.rating.icon} {entry.comment} {entry.updated} {entry.version}'
       }
     };
     assert.deepEqual(itunesAppReviews.report(data, options), expected);
   });
-  
+
   it('should get report inserted day string', function () {
     var expected = 'iTunes Review Report 2015-01-28';
     var options = {
@@ -145,8 +145,20 @@ describe('report()', function() {
     };
     assert.deepEqual(itunesAppReviews.report(data, options), expected);
   });
-  
-  it('should get report, sepalator is <br>', function () {
+
+  it('should get report, separator is <br>', function () {
+    var expected = 'iTunes Review Report<br>';
+    var options = {
+      separator: '<br>',
+      template: {
+        header: '{title}{separator}',
+        entry: ''
+      }
+    };
+    assert.deepEqual(itunesAppReviews.report(data, options), expected);
+  });
+
+  it('should get report, sepalator is <br> (Leave the "sepalator" option for the compatibility due to my typo).', function () {
     var expected = 'iTunes Review Report<br>';
     var options = {
       sepalator: '<br>',
@@ -155,10 +167,9 @@ describe('report()', function() {
         entry: ''
       }
     };
-    console.log(itunesAppReviews.report(data, options))
     assert.deepEqual(itunesAppReviews.report(data, options), expected);
   });
-  
+
   it('should return false when the data params is not array', function () {
     assert.equal(itunesAppReviews.report({}), false);
   });

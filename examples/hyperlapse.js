@@ -7,8 +7,8 @@ iTunesAppReviews.on('data', function(review) {
   // custom template
   var options = {
     template: {
-      header: '{title} total: {summary.total}{sepalator}',
-      entry: '{entry.rating.icon} by {entry.author}{sepalator}'
+      header: '{title} total: {summary.total}{separator}',
+      entry: '{entry.rating.icon} by {entry.author}{separator}'
     }
   };
   console.log(iTunesAppReviews.report(review, options));
